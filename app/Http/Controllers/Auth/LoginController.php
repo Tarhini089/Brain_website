@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Routing\Controller;
-use Illuminate\Auth\AuthenticatesUsers; // Correct namespace for the trait
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -20,7 +20,7 @@ class LoginController extends Controller
     */
     
 
-    use AuthenticatesUsers;
+    // use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.

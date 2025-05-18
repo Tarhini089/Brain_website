@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('username')->unique()->after('id');
-            // Remove email if you want username-only auth
-            // $table->dropColumn('email');
+        Schema::create('cities', function (Blueprint $table) {
+            $table->id(); // Auto-incrementing ID
+            $table->string('name'); // Country name
+            $table->boolean('isinactive')->default(false); // Checkbox (inactive = true)
+            $table->timestamps(); // created_at and updated_at
         });
     }
 
@@ -23,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('city');
     }
 };
