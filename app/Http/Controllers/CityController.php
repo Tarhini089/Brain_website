@@ -3,14 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; // ✅ this is correct
 use Illuminate\Support\Facades\Log;
 
 class CityController extends Controller
 {
-    public function index()
+   
+    public function index(Request $request)
     {
-        $cities = City::all();
+        $query = City::query();
+
+        if ($request->has('search') && $request->search !== '') {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        $cities = $query->get();
+
         return view('cities.index', compact('cities'));
     }
 

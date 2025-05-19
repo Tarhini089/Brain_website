@@ -39,6 +39,8 @@ Route::resource('zones', ZoneController::class);
 
 route::resource('customers', \App\Http\Controllers\CustomerController::class);
 
+Route::get('/cities/search', [CityController::class, 'search'])->name('cities.search');
+
 
 
 require __DIR__.'/auth.php';
